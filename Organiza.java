@@ -5,23 +5,21 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Organiza {
-	protected int nway; //qual vai ser, direto, 2-way, 4-way,8-way(colunas)
-	protected int tamC; //tamanho da cache
-	protected int tamB=16; //tamanho do bloco
+	protected int nway; //direct, 2-way, 4-way, 8-way (speakers)
+	protected int tamC; //cache size
+	protected int tamB=16; //block size
 	protected ArrayList<String> linha = new ArrayList<String>();
 
-	//Os caras da cache
-	//private String[] Offset; //Eu n "preciso" dele
-	protected int[] Index; //Ele vai Determina, apenas o Tamanho das matrizes
+	
+	//private String[] Offset; //I do "not" need it
+	protected int[] Index; 
 	private String TagS;
 	
-	//Localizaï¿½ï¿½o
-	protected int In; //Linha q ta atuando
+	protected int In; //Line acting
 	
-	protected int[][] FLaux;// 
+	protected int[][] FLaux;//Matrix of positions
 	
-	Organiza(File arq,int way,int Tcache) throws IOException{	// Arquivo, Conjunto e tamanho da cache
-		//Atribuindo os valores
+	Organiza(File arq,int way,int Tcache) throws IOException{// File, Set, and Cache Size
 		this.nway=way;
 		this.tamC=Tcache;
 		this.Index=new int[tamC/(tamB*nway)];
@@ -30,12 +28,12 @@ public class Organiza {
 		FileReader leitor= new FileReader(arq);
 		BufferedReader buffer = new BufferedReader(leitor);
 		String teInto;
-		while((teInto = buffer.readLine()) != null){//Salvando o arquivo num arraqy
+		while((teInto = buffer.readLine()) != null){//Saving the file in an array
 			this.linha.add(teInto);
 		}
 	}
 	
-	public int conversor2(int In) { //Converso pra base dois
+	public int conversor2(int In) { //Convert to base two
 		int y=1;
 		int cont = 0;
 		while(y<In) {
@@ -45,7 +43,7 @@ public class Organiza {
 		return cont;
 	}
 	
-	public String conversorHB(int y) {//Conversor de HeIna para binario
+	public String conversorHB(int y) {//Hexa Converter for Binary
 		String In=linha.get(y);
 		String verso = "";
 		for(int i=0;i<In.length();i++) {
@@ -101,49 +99,48 @@ public class Organiza {
 			}
 		}
 		
-		//variaveis q auIniliam o cara da cache
+		
 		int a=conversor2(tamB); //Offset
-		int b=conversor2(tamC/(tamB*nway)); //IndeIn
+		int b=conversor2(tamC/(tamB*nway)); //Index
 		int c=32-a-b; //Tag=32-Off-In
 		
-		//Guarda temporariamente o Index desta Tag
+		//Temporarily Save This Tag Index
 		this.In=Integer.parseInt(verso.substring(c,28), 2);
-		
-		//Vai so dividir o resto
-		//this.Offset[In]=verso.substring(28,32); //Eu n preciso deles
+		//I do not need them
+		//this.Offset[In]=verso.substring(28,32);
 		//this.Index[In]=In;
-		return this.TagS=verso.substring(0, c);//Retorna a tag do aqr lido
+		return this.TagS=verso.substring(0, c);//Returns the tag of the read file
 	}
 	
-	public int repaginar(String f,int pos) { //forma e posição que ocorreu o hit
-		int menor=1,maior=1, pme=0; // variaveis de apoio
-		for(int k=0;k<nway;k++) { //Percorre para achar o maior e menor do conjunto em questão
+	public int repaginar(String f,int pos) { //shape and position that hit
+		int menor=1,maior=1, pme=0; //higher, lower and position of the minor
+		for(int k=0;k<nway;k++) { 
 			if(maior<=FLaux[In][k]) 
 				maior=FLaux[In][k];
 			if(menor>FLaux[In][k]) 
 				menor=FLaux[In][k];
 		}
 		//LRU
-		if(f=="LRU") { //Ocorre apenas se o método for Lru
-			for(int k=0;k<nway;k++) { //Percorre o conjunto em questão
-				if(FLaux[In][k]>FLaux[In][pos]) //Se A posição em questão for								
-					FLaux[In][k]--;           //que a posição que ocorreu o hit
+		if(f=="LRU") { 
+			for(int k=0;k<nway;k++) {
+				if(FLaux[In][k]>FLaux[In][pos]) 								
+					FLaux[In][k]--;          
 			}
-			FLaux[In][pos]=maior; //A posição que aconteceu o hit recebe o maior
+			FLaux[In][pos]=maior;
 			return 0;
 		}
 		//Fifo
-		for(int k=0;k<nway;k++) { //Percorre o cojunto para encontrar o seu menor
+		for(int k=0;k<nway;k++) { 
 			if(menor==FLaux[In][k]) 
 				pme=k;
 		}
 		
-		for(int k=0;k<nway;k++) { //Diminui todos
+		for(int k=0;k<nway;k++) { 
 			FLaux[In][k]--;
 		}
-		for(int k=0;k<nway;k++)//Como eu diminui todos é logico
-			if(FLaux[In][k]==0) //que terá um com zero
-				FLaux[In][k]=maior; // O que estiver zero, recebe o maior
+		for(int k=0;k<nway;k++)
+			if(FLaux[In][k]==0) 
+				FLaux[In][k]=maior;
 		return pme;
 	}
 }
