@@ -1,5 +1,3 @@
 # Simulador-de-memoria-cache-
-O Projeto foi escrito em java e tem como objetivo, simular uma leitura real em
-uma cache, ou seja, verifica-se se o endereço está contido na cache; caso não
-esteja, o bloco que contém esse endereço na memória principal deve ser trazido
-para a cache.
+
+The project was written in Java and aims to simulate a real read in a cache, that is, check if the address is in a cache; The case is not, the block containing the following in main memory must be brought to a cache.
