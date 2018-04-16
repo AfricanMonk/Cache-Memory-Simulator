@@ -26,7 +26,7 @@ public class Direto extends Organiza {
 				this.hit++; 
 			}	
 		}
-		System.out.println("Erros:"+miss);
-		System.out.println("Acertos:"+hit);	
+		System.out.println("Miss:"+miss);
+		System.out.println("Hits:"+hit);	
 	}	
 }	
