@@ -1,6 +1,6 @@
 import java.io.File;
 import java.io.IOException;
-
+//Class designed to make the FIFO and LRU replacement methods
 public class FL extends Organiza{
 	private String tag; 
 	private String[][] FL=new String[Index.length][nway+1];
@@ -43,7 +43,7 @@ public class FL extends Organiza{
 				
 			}
 		}
-		System.out.println("Erros:"+miss);
-		System.out.println("Acertos:"+hit);	
+		System.out.println("Miss:"+miss);
+		System.out.println("Hits:"+hit);	
 	}
 }
