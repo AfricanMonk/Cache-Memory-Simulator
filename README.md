@@ -1,6 +1,6 @@
 # Cache-Memory-Simulator
 
-Apresenta os seguintes métodos
+Apresenta os seguintes métodos:
 
 Lru: Least-Recently Used
 
