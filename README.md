@@ -13,3 +13,4 @@
 O simulador é testado através de um arquivo com endereços estão em hexadecimal.<br>
 Após os testes forma gerados os seguintes resultados apresentados na tabela abaixo:</p>
 
+![Tabela](https://user-images.githubusercontent.com/34459397/60374013-c0508980-99d8-11e9-8567-368a23b033e1.png)
