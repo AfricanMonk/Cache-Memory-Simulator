@@ -5,7 +5,7 @@
 
 <h1 id="cache-memory-simulator">Cache Memory Simulator</h1>
 <p>Nesse código tem como principal objetivo projetar um simulador de memória cache simples.</p>
-<h1 id="descrição">Descrição</h1>
+<h2 id="descrição">Descrição</h2>
 <p>O simulador simula diversas arquiteturas de cache seguindo os parâmetros abaixo:<br>
 1-Tamanho da cache: 1024, 2048, 4096, 8192, 16384 bytes;<br>
 2. Tamanho do bloco: 16 bytes; 3. Mapeamentos: direto, 2-way, 4-way e 8-way; 4. Política de substituição: LRU, FIFO</p>
