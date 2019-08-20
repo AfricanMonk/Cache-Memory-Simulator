@@ -1,7 +1,3 @@
----
-
-
----
 
 <h1 id="cache-memory-simulator">Cache Memory Simulator</h1>
 <p>Nesse código tem como principal objetivo projetar um simulador de memória cache simples.</p>
