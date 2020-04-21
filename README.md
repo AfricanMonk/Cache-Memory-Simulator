@@ -8,6 +8,9 @@ Simula diversas arquiteturas de cache seguindo os parâmetros abaixo:
 
 A cache contabiliza o número de acertos e erros para cada configuração de cache. A entrada do programa é um arquivo contendo uma sequência de endereços. Para cada endereço, é  simulado uma leitura real na cache. Portanto, dado um endereço é verificado se o mesmo está contido na cache. Caso não esteja, o contador de erros deve ser incrementado e a cache atualizada usando a política de substituição.
 
+### Execução
+No arquivo principal, informe o diretorio do arquivo hexadecimal e informe os parâmetros para executar o simulador
+
 ### Resultados
 O simulador é testado através de um arquivo com endereços em hexadecimal, que pode ser encontrado neste repositório
 Após os testes foram gerados os seguintes resultados apresentados na tabela abaixo:
