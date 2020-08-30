@@ -20,7 +20,7 @@
 
 ## 🛠️ Ferramentas e Tecnologias Utilizadas
 - [Vs Code](https://code.visualstudio.com/)
-- [Python](https://www.python.org/)
+- [Java](https://www.java.com/pt_BR/)
 
 ## 📕 Descrição
 Simula diversas arquiteturas de cache seguindo os parâmetros abaixo:
